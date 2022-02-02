@@ -5,10 +5,14 @@ import {
 } from "@mui/icons-material";
 import React, { useEffect } from "react";
 import { useStateValue } from "./StateProvider";
+import Mode from "./Mode";
+  import {useContext} from 'react';
+  import ModeSwicher from './ModeSwicher';
+
 
 function Header() {
   const [{ cart }, dispatch] = useStateValue();
-
+  const context = useContext(ModeSwicher);
   useEffect(() => {
     const toggleIcon = document.querySelector(".toggleMenu");
     toggleIcon.addEventListener("click", () => {
@@ -17,7 +21,7 @@ function Header() {
   }, []);
 
   return (
-    <header>
+    <header className={`${context.isDark?"headerDark":"header"}`}>
       <img
         src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Flogo.png?alt=media&token=fc228623-ef27-4af4-8ea5-b9ebeeaf47dc"
         alt=""
@@ -35,6 +39,9 @@ function Header() {
           <p>{cart ? cart.length : ""}</p>
         </div>
       </div>
+
+      <Mode />
+      
 
       <div className="profileContainer">
         <div className="imgBox">

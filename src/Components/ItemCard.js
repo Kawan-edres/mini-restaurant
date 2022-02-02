@@ -4,9 +4,14 @@ import { actionType } from "./reducer";
 import { useStateValue } from "./StateProvider";
 import { Items } from "./Data";
 import { useEffect } from "react";
+import {useContext} from 'react';
+import ModeSwicher from './ModeSwicher';
 let cartData = [];
 
 function ItemCard({ itemId, imgSrc, name, price, ratings }) {
+
+  const context = useContext(ModeSwicher);
+
   const [currentValue, setCurrentValue] = useState(Math.floor(ratings));
   const [isFavourite, setFavourite] = useState(false);
   const [{}, dispatch] = useStateValue();
@@ -39,7 +44,7 @@ function ItemCard({ itemId, imgSrc, name, price, ratings }) {
         <img src={imgSrc} alt="" className="itemImg" />
       </div>
 
-      <div className="itemContent">
+      <div className={`${context.isDark?"itemContentDark":"itemContent"}`}>
         <h3 className="itemName">{name}</h3>
         <div className="bottom">
           <div className="ratings">

@@ -1,27 +1,64 @@
 .App {
   width: 100vw;
   height: 100vh;
-  background: #faf9fb;
+  background-color: #fff;
   overflow-x: hidden;
 }
+
+.AppDark{
+  width: 100vw;
+  height: 100vh;
+  background-color: #282c34;
+  overflow-x: hidden;
+  color: white;
+
+}
+.darkMode{
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 5px 15px ;
+  background-color: #282c34;
+  color: white;
+
+
+}
+
 
 .App::-webkit-scrollbar {
   display: none;
 }
 
-header {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 5px 15px;
   height: 60px;
   width: 100%;
-  background: #fff;
+  background-color: #fff;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 101;
   box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1);
+}
+.headerDark {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 15px;
+  height: 60px;
+  width: 100%;
+  background-color: #282c34;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1);
+  color: white;
 }
 
 .logo {
@@ -335,6 +372,7 @@ main {
   padding: 10px 0;
 }
 
+
 .menuCard {
   width: 100%;
 }
@@ -382,6 +420,7 @@ main {
   overflow-y: hidden;
   margin: 10px 0;
   padding: 10px 0;
+  
 }
 
 .rowContainer::-webkit-scrollbar {
@@ -404,6 +443,26 @@ main {
   transition: 0.5s;
   cursor: pointer;
 }
+.rowMenuCardDark {
+  width: 80px;
+  min-width: 80px;
+  height: 100px;
+  border-radius: 10px;
+  background: #282c34;
+  margin-right: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.5s;
+  cursor: pointer;
+  margin-bottom: 40px;
+  color: white;
+}
+
+
 
 .rowMenuCard:hover,
 .rowMenuCard.active {
@@ -484,12 +543,12 @@ main {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  
 }
 
 .itemCard {
   width: 160px;
   height: 180px;
-
   position: relative;
   display: flex;
   flex-direction: column;
@@ -545,6 +604,16 @@ main {
   padding: 10px;
   padding-top: 50px;
   border-radius: 15px;
+}
+.itemContentDark {
+  width: 100%;
+  background: #282c34;
+  color: white;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  padding-top: 50px;
+  border-radius: 15px;
+  margin-top: 100px;
 }
 
 .itemContent .itemName {
@@ -612,6 +681,22 @@ main {
   box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1);
 }
 
+.rightMenuDark {
+  width: 350px;
+  height: calc(100% - 55px);
+  background: #282c34;
+  color: white;
+  position: fixed;
+  right: 0;
+  top: 55px;
+  z-index: 105;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1);
+}
 .rightMenu.active {
   transform: translateX(0%);
 }
@@ -621,141 +706,23 @@ main {
   width: 100%;
   height: auto;
 }
-
-.debitCard {
-  position: relative;
-  width: 100%;
-  height: 170px;
-  min-width: 300px;
-  min-height: 170px;
-  border-radius: 15px;
-}
-
-.debitCard::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #f8901c;
-  transform: rotate(5deg);
-  border-radius: 15px;
-  filter: blur(2px);
-  z-index: -2;
-}
-
-.debitCard::after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    35deg,
-    rgba(255, 255, 255, 0.3),
-    rgba(255, 255, 255, 0.1)
-  );
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  z-index: -1;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.cardGroup {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
-.cardLogo,
-.cardChip,
-.card_number,
-.card_name,
-.card_from,
-.card_to,
-.card_ring {
-  position: absolute;
-}
-
-.cardLogo {
-  width: 60px;
-  top: 30px;
-  right: 30px;
-  height: auto;
-}
-
-.cardChip {
-  width: 40px;
-  top: 50px;
-  left: 30px;
-  height: auto;
-}
-
-.card_number,
-.card_from,
-.card_to,
-.card_name {
-  color: #fff;
-  font-weight: 400;
-  letter-spacing: 2px;
-}
-
-.card_number {
-  left: 30px;
-  bottom: 60px;
-}
-
-.card_name {
-  font-size: 12px;
-  bottom: 30px;
-  left: 30px;
-}
-
-.card_from {
-  font-size: 12px;
-  bottom: 30px;
-  right: 90px;
-}
-
-.card_to {
-  bottom: 30px;
-  right: 30px;
-  font-size: 12px;
-}
-
-.card_ring {
-  height: 400px;
-  width: 400px;
-  border-radius: 100vw;
-  background: transparent;
-  border: 50px solid rgba(0, 0, 0, 0.1);
-  top: -250px;
-  right: -250px;
-  box-sizing: border-box;
-}
-
-.card_ring::after {
-  content: "";
-  position: absolute;
-  height: 500px;
-  width: 500px;
-  border-radius: 100vw;
-  background: transparent;
-  border: 50px solid rgba(0, 0, 0, 0.1);
-  bottom: -415px;
-  right: -155px;
-  box-sizing: border-box;
-}
-
 .cartContainer {
   width: 100%;
   flex: 1;
   min-width: 320px;
   padding: 0px 10px;
   margin-top: 10px;
+  color: #2a2b3c;
+
+}
+.cartContainerDark {
+  width: 100%;
+  flex: 1;
+  min-width: 320px;
+  padding: 0px 10px;
+  margin-top: 10px;
+  color: #fff;
+
 }
 
 .cartItems {
@@ -765,6 +732,7 @@ main {
   margin-top: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
+
 }
 
 .cartItems::-webkit-scrollbar {
@@ -802,12 +770,11 @@ main {
 
 .cartItem .itemSection .itemName {
   font-size: 16px;
-  color: #2a2b3c;
+  
 }
 
 .cartItem .itemSection .itemQuantity {
   font-size: 16px;
-  color: #2a2b3c;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -827,19 +794,17 @@ main {
 }
 
 .cartItem .itemSection .itemQuantity .quantity .itemRemove {
-  color: #2a2b3c;
   font-size: 24px;
 }
 
 .cartItem .itemSection .itemQuantity .quantity .itemAdd {
-  color: #2a2b3c;
+  
   font-size: 24px;
 }
 
 .cartItem .itemPrice {
   font-size: 16px;
   font-weight: 600;
-  color: #2a2b3c;
   margin-left: auto;
 }
 
@@ -850,7 +815,6 @@ main {
 
 .cartItem .itemPrice .itemPriceValue {
   font-size: 16px;
-  color: #373848;
 }
 
 .totalSection {
@@ -865,13 +829,11 @@ main {
 .totalSection h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #2a2b3c;
 }
 
 .totalSection p {
   font-size: 18px;
   font-weight: 600;
-  color: #2a2b3c;
 }
 
 .totalSection p span {
@@ -924,9 +886,14 @@ main {
     left: 21%;
     width: 40%;
   }
-
   .mainContainer {
     width: calc(100% - 350px);
+  }
+
+  .mainContainerDark {
+    width: calc(100% - 350px);
+    background-color: #282c34;
+    color: black;
   }
   .banner {
     height: 160px;

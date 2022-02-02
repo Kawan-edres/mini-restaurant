@@ -19,8 +19,17 @@ import DebitCard from "./Components/DebitCard";
 import SubMenuContainer from "./Components/SubMenuContainer";
 import CartItem from "./Components/CartItem";
 import { useStateValue } from "./Components/StateProvider";
+import ModeSwicher from './Components/ModeSwicher';
+
 
 function App() {
+  //dark mode codes
+  const[isDark,setIsDark]=useState(JSON.parse(localStorage.getItem('mode'))? true:false);
+  const swich=()=>{
+    const choosenMode=!isDark;
+    setIsDark(choosenMode);
+    localStorage.setItem('mode',choosenMode)
+  }
   const [isMainData, setMainData] = useState(
     Items.filter((element) => element.itemId == "buger01")
   );
@@ -55,17 +64,20 @@ function App() {
     setMainData(Items.filter((element) => element.itemId == itemId));
   };
 
+
   return (
-    <div className="App">
+    <ModeSwicher.Provider value={{isDark,swich}}>
+
+    <div className={`${isDark?"AppDark":"App"}`}>
       {/* Header section */}
       <Header />
 
      
       <main>
-        <div className="mainContainer">
+        <div className={`${isDark?"mainContainerDark":"mainContainer"}`}>
           {/* Banner  */}
           <div className="banner">
-            <BannerName name={"Jeremy"} discount={"20"} more={"#"} />
+            <BannerName name={"Kawan"} discount={"20"} more={"#"} />
             <img
               src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fdelivery.png?alt=media&token=69b9823d-96df-452a-bd4e-14d27a4cc337"
               alt=""
@@ -73,7 +85,7 @@ function App() {
             />
           </div>
 
-          <div className="dishContainer">
+          <div className={`${isDark?"dishContainerDark":"dishContainer"}`}>
             <div className="menuCard">
               <SubMenuContainer />
             </div>
@@ -106,11 +118,9 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="rightMenu">
+        <div className={`${isDark?"rightMenuDark":"rightMenu"}`}>
           <div className="debitCardContainer">
-            <div className="debitCard">
-              <DebitCard />
-            </div>
+            
           </div>
 
           {!cart ? (
@@ -123,7 +133,7 @@ function App() {
             </div>
           ) : (
             <div className="cartCheckOutContianer">
-              <div className="cartContainer">
+              <div className={`${isDark?"cartContainerDark":"cartContainer"}`}>
                 <SubMenuContainer />
 
                 <div className="cartItems">
@@ -152,7 +162,10 @@ function App() {
         </div>
       </main>
     </div>
+    </ModeSwicher.Provider>
+
   );
+
 }
 
 export default App;
