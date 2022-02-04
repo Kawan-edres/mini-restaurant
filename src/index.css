@@ -30,3 +30,6 @@ a {
 img {
   max-width: 100%;
 }
+i,button{
+  cursor: pointer;
+}
